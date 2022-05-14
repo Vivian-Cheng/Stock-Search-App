@@ -27,7 +27,6 @@ import android.widget.AdapterView;
 import android.widget.AutoCompleteTextView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.example.app.API.APIController;
@@ -39,7 +38,6 @@ import com.example.app.Section.StockMoveCallback;
 import com.example.app.databinding.ActivityMainBinding;
 import com.example.app.databinding.SectionFavoriteBinding;
 import com.example.app.databinding.SectionPortfolioBinding;
-import com.google.android.material.snackbar.Snackbar;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -60,7 +58,6 @@ public class MainActivity extends AppCompatActivity {
     private static final long AUTO_COMPLETE_DELAY = 300;
     private static final int AUTO_REFRESH_DELAY = 15000;
     public static final String EXTRA_TICKER = "com.example.app.MESSAGE";
-    public DataFormatter dataFormatter = new DataFormatter();
     private APIController apiController;
     private Handler handler;
     private SuggestAdapter suggestAdapter;
@@ -170,7 +167,7 @@ public class MainActivity extends AppCompatActivity {
     // Reference: https://www.truiton.com/2018/06/android-autocompletetextview-suggestions-from-webservice-call/
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        //final TextView selectedText = findViewById(R.id.selected_item);
+        // Final TextView selectedText = findViewById(R.id.selected_item);
         getMenuInflater().inflate(R.menu.menu, menu);
 
         // Link search bar with search autocomplete
@@ -322,13 +319,7 @@ public class MainActivity extends AppCompatActivity {
             updatePortfoSection(portfoList, map);
             updateFavoriteSection(favoriteList, map);
             progressBar.setVisibility(View.GONE);
-        }/*
-        if (portfoList.get(0).equals("") && favoriteList.get(0).equals("")) {
-            updateWallet(portfoList, map);
-            updatePortfoSection(portfoList, map);
-            updateFavoriteSection(favoriteList, map);
-            progressBar.setVisibility(View.GONE);
-        }*/
+        }
     }
 
     private void updateWallet(List<String> list, Map<String, Stock> map) {
@@ -340,8 +331,8 @@ public class MainActivity extends AppCompatActivity {
             if (map.containsKey(ticker))
                 value += map.get(ticker).currPrice * LocalStorage.getInstance(this).getPortfoOwned(ticker);
         }
-        sectionPortfolioBinding.portfolioHeader.netWorth.setText(dataFormatter.toPriceFormat(value+balance));
-        sectionPortfolioBinding.portfolioHeader.cashBalance.setText(dataFormatter.toPriceFormat(balance));
+        sectionPortfolioBinding.portfolioHeader.netWorth.setText(DataFormatter.toPriceFormat(value+balance));
+        sectionPortfolioBinding.portfolioHeader.cashBalance.setText(DataFormatter.toPriceFormat(balance));
     }
 
     private void updatePortfoSection(List<String> list, Map<String, Stock> map) {
@@ -362,51 +353,9 @@ public class MainActivity extends AppCompatActivity {
             if (list.get(i) == null || list.get(i).equals("")) {
                 continue;
             }
-
-            //System.out.println("update: " + list.get(i));
             currList.add(map.get(list.get(i)));
         }
         sectionAdapterFavorite.set(currList);
         sectionAdapterFavorite.notifyDataSetChanged();
     }
-
-    /*
-    private void setPortfoSection() {
-        List<String> list = new ArrayList<>();
-        sectionAdapterPotfo.addSection(new PortfoSection(list, this));
-        // Set up your RecyclerView with the SectionedRecyclerViewAdapter
-        RecyclerView recyclerView = sectionPortfolioBinding.recyclePortfolio;
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(sectionAdapterPotfo);
-
-        sectionAdapterFavorite.addSection(new FavoriteSection(list, this));
-        RecyclerView favoriteRecycleView = sectionFavoriteBinding.recycleFavorite;
-        favoriteRecycleView.setLayoutManager(new LinearLayoutManager(this));
-        favoriteRecycleView.setAdapter(sectionAdapterFavorite);
-    }
-
-     */
-
-    /*
-    private void fetchPortfolio() {
-        List<String> list = LocalStorage.getInstance(this).getOrder("portfolio");
-        Item[] itemArr = new Item[list.size()];
-        AtomicInteger requestNum = new AtomicInteger(list.size());
-        for (int i = 0; i < list.size(); i++) {
-            int index = i;
-            apiController.getQuote(list.get(i), data -> {
-                requestNum.getAndDecrement();
-                try {
-                    Double price = data.getDouble("c");
-                    Double change = data.getDouble("d");
-                    Double changePercent = data.getDouble("dp");
-                    itemArr[index] = new Item(list.get(index), price, change, changePercent);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            });
-        }
-    }
-
-     */
 }

@@ -9,10 +9,8 @@ import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.cardview.widget.CardView;
@@ -21,7 +19,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.app.DataFormatter;
 import com.example.app.R;
-import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -66,14 +63,13 @@ public class RecyclerNewAdapter extends RecyclerView.Adapter<RecyclerNewAdapter.
 
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, final int pos) {
-        DataFormatter dataFormatter = new DataFormatter();
         TextView source = viewHolder.getCardView().findViewById(R.id.news_source);
         TextView elapsed = viewHolder.getCardView().findViewById(R.id.news_elapsed);
         TextView headline = viewHolder.getCardView().findViewById(R.id.news_headline);
         ImageView img = viewHolder.getCardView().findViewById(R.id.news_img);
         try {
             source.setText(list.get(pos).getString("source"));
-            elapsed.setText(dataFormatter.toElapsedTime(list.get(pos).getString("datetime")));
+            elapsed.setText(DataFormatter.toElapsedTime(list.get(pos).getString("datetime")));
             headline.setText(list.get(pos).getString("headline"));
             //Picasso.get().load(list.get(pos).getString("image")).into(img);
             Glide.with(context).load(list.get(pos).getString("image")).into(img);
@@ -84,10 +80,7 @@ public class RecyclerNewAdapter extends RecyclerView.Adapter<RecyclerNewAdapter.
             String webUrl = "";
             String text = "";
             final Dialog dialog = new Dialog(context);
-            //Window window = dialog.getWindow();
-            //window.requestFeature(Window.FEATURE_NO_TITLE);
             dialog.setContentView(R.layout.news_dialog);
-            //window.setLayout(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
             dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
             TextView diaSource = dialog.findViewById(R.id.source);
             TextView diaDate = dialog.findViewById(R.id.timestamp);
@@ -99,7 +92,7 @@ public class RecyclerNewAdapter extends RecyclerView.Adapter<RecyclerNewAdapter.
             try {
                 text = list.get(pos).getString("headline");
                 diaSource.setText(list.get(pos).getString("source"));
-                diaDate.setText(dataFormatter.toDateNews(list.get(pos).getString("datetime")));
+                diaDate.setText(DataFormatter.toDateNews(list.get(pos).getString("datetime")));
                 diaHeadline.setText(list.get(pos).getString("headline"));
                 diaSummary.setText(list.get(pos).getString("summary"));
                 webUrl = list.get(pos).getString("url");

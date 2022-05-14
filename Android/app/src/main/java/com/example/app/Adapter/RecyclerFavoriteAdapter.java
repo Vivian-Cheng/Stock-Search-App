@@ -11,15 +11,12 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.app.API.APIController;
 import com.example.app.DataFormatter;
 import com.example.app.InfoActivity;
 import com.example.app.LocalStorage;
 import com.example.app.R;
 import com.example.app.Section.Stock;
 import com.example.app.Section.StockMoveCallback;
-
-import org.json.JSONException;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -74,13 +71,12 @@ public class RecyclerFavoriteAdapter extends RecyclerView.Adapter<RecyclerFavori
 
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, final int pos) {
-        DataFormatter dataFormatter = new DataFormatter();
         Stock stock = list.get(pos);
         viewHolder.itemTitle.setText(stock.ticker);
-        viewHolder.itemPrice.setText(dataFormatter.toPriceFormat(stock.currPrice));
+        viewHolder.itemPrice.setText(DataFormatter.toPriceFormat(stock.currPrice));
         viewHolder.itemCompany.setText(stock.company);
-        viewHolder.itemChange.setText(dataFormatter.toPriceFormat(stock.change));
-        viewHolder.itemChangePercent.setText(dataFormatter.toPercentFormat(stock.changePercent));
+        viewHolder.itemChange.setText(DataFormatter.toPriceFormat(stock.change));
+        viewHolder.itemChangePercent.setText(DataFormatter.toPercentFormat(stock.changePercent));
         if (stock.change > 0) {
             viewHolder.itemChange.setTextColor(context.getResources().getColor(R.color.lightgreen));
             viewHolder.itemChangePercent.setTextColor(context.getResources().getColor(R.color.lightgreen));

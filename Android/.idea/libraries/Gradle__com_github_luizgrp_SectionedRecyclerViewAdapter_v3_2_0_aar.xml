@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.luizgrp:SectionedRecyclerViewAdapter:v3.2.0@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/8cf1ab9eeb9889ed999e8909b915c806/transformed/SectionedRecyclerViewAdapter-v3.2.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/8cf1ab9eeb9889ed999e8909b915c806/transformed/SectionedRecyclerViewAdapter-v3.2.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/8cf1ab9eeb9889ed999e8909b915c806/transformed/SectionedRecyclerViewAdapter-v3.2.0/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.luizgrp/SectionedRecyclerViewAdapter/v3.2.0/83fdb23ac6968087fcee4fc2ea9122aecbcc0965/SectionedRecyclerViewAdapter-v3.2.0-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.luizgrp/SectionedRecyclerViewAdapter/v3.2.0/d17f7bd0501b5418ecdc25c3973c0001409e6960/SectionedRecyclerViewAdapter-v3.2.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -71,18 +71,17 @@ public class RecyclerPortfoAdapter extends RecyclerView.Adapter<RecyclerPortfoAd
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, final int pos) {
         System.out.println("onBindViewHolder: " +list.get(pos));
-        DataFormatter dataFormatter = new DataFormatter();
         Stock stock = (Stock) list.get(pos);
         String ticker = stock.ticker;
         int own = LocalStorage.getInstance(context).getPortfoOwned(ticker);
         Double value = own * stock.currPrice;
-        Double change = Double.valueOf(dataFormatter.toDecimal((stock.currPrice - LocalStorage.getInstance(context).getPortfoAvg(ticker)) * own));
+        Double change = Double.valueOf(DataFormatter.toDecimal((stock.currPrice - LocalStorage.getInstance(context).getPortfoAvg(ticker)) * own));
         Double changePercent = change / LocalStorage.getInstance(context).getPortfoCost(ticker) * 100;
         viewHolder.itemTitle.setText(stock.ticker);
-        viewHolder.itemPrice.setText(dataFormatter.toPriceFormat(value));
+        viewHolder.itemPrice.setText(DataFormatter.toPriceFormat(value));
         viewHolder.itemNumShare.setText(String.valueOf(own) + " shares");
-        viewHolder.itemChange.setText(dataFormatter.toPriceFormat(change));
-        viewHolder.itemChangePercent.setText(dataFormatter.toPercentFormat(changePercent));
+        viewHolder.itemChange.setText(DataFormatter.toPriceFormat(change));
+        viewHolder.itemChangePercent.setText(DataFormatter.toPercentFormat(changePercent));
         if (change > 0) {
             viewHolder.itemChange.setTextColor(context.getResources().getColor(R.color.lightgreen));
             viewHolder.itemChangePercent.setTextColor(context.getResources().getColor(R.color.lightgreen));

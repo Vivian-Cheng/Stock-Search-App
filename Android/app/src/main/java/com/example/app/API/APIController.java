@@ -6,7 +6,6 @@ import android.widget.Toast;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
 import com.android.volley.Response.Listener;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
@@ -48,18 +47,6 @@ public class APIController {
         });
         jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(10000, 1, 1.0f));
         requestQueue.add(jsonObjectRequest);
-        /*
-        try {
-            jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, response -> {
-                listener.onResponse(response);
-            }, error -> {
-                System.out.println(error.getMessage());
-            });
-            requestQueue.add(jsonObjectRequest);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-         */
     }
 
     public void jsonArrRequester(String url, Listener<JSONArray> listener) {
@@ -71,18 +58,6 @@ public class APIController {
         });
         jsonArrayRequest.setRetryPolicy(new DefaultRetryPolicy(10000, 1, 1.0f));
         requestQueue.add(jsonArrayRequest);
-        /*
-        try {
-            JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null, response -> {
-                listener.onResponse(response);
-            }, error -> {
-                System.out.println(error.getMessage());
-            });
-            requestQueue.add(jsonArrayRequest);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-         */
     }
 
     // GET request for company description

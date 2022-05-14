@@ -70,7 +70,6 @@ public class InfoActivity extends AppCompatActivity {
     private Dialog dialog;
     private Dialog messageDialog;
     private APIController apiController;
-    private DataFormatter dataFormatter;
     private View view;
     private int[] chartIcon = {R.drawable.ic_chart_line, R.drawable.ic_clock_time_three};
 
@@ -90,7 +89,6 @@ public class InfoActivity extends AppCompatActivity {
         infoNewsBinding = activityInfoBinding.news;
 
         apiController = new APIController(this);
-        dataFormatter = new DataFormatter();
 
         ProgressBar progressBar = activityInfoBinding.spinner;
 
@@ -179,7 +177,7 @@ public class InfoActivity extends AppCompatActivity {
         TextView wallet = dialog.findViewById(R.id.wallet);
         TextView successMsg = messageDialog.findViewById(R.id.trade_message_action);
 
-        wallet.setText(dataFormatter.toPriceFormat(LocalStorage.getInstance(this).getBalance()));
+        wallet.setText(DataFormatter.toPriceFormat(LocalStorage.getInstance(this).getBalance()));
 
         input.addTextChangedListener(new TextWatcher() {
             @Override
@@ -188,12 +186,12 @@ public class InfoActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 String inputValue = input.getText().toString();
-                if (!dataFormatter.isInteger(inputValue) || Integer.valueOf(inputValue) < 0) {
+                if (!DataFormatter.isInteger(inputValue) || Integer.valueOf(inputValue) < 0) {
                     inputValue = "0";
                 }
                 amount.setText(inputValue);
                 Double totalValue = Integer.valueOf(inputValue)*Double.valueOf(price.getText().toString().substring(1));
-                total.setText(dataFormatter.toDecimal(totalValue));
+                total.setText(DataFormatter.toDecimal(totalValue));
             }
 
             @Override
@@ -205,7 +203,7 @@ public class InfoActivity extends AppCompatActivity {
         });
         buyBtn.setOnClickListener(buyView -> {
             String inputValue = input.getText().toString();
-            if (!dataFormatter.isInteger(inputValue)) {
+            if (!DataFormatter.isInteger(inputValue)) {
                 alertHandler(getString(R.string.please_enter_a_valid_amount));
             } else if (Integer.valueOf(inputValue) <= 0) {
                 alertHandler(getString(R.string.cannot_buy_non_positive_shares));
@@ -220,12 +218,12 @@ public class InfoActivity extends AppCompatActivity {
                 successMsg.setText(getString(R.string.buy_message) + " " + inputValue);
                 // update
                 updatePortfo();
-                wallet.setText(dataFormatter.toPriceFormat(LocalStorage.getInstance(this).getBalance()));
+                wallet.setText(DataFormatter.toPriceFormat(LocalStorage.getInstance(this).getBalance()));
             }
         });
         sellBtn.setOnClickListener(sellView -> {
             String inputValue = input.getText().toString();
-            if (!dataFormatter.isInteger(inputValue)) {
+            if (!DataFormatter.isInteger(inputValue)) {
                 alertHandler(getString(R.string.please_enter_a_valid_amount));
             } else if (Integer.valueOf(inputValue) <= 0) {
                 alertHandler(getString(R.string.cannot_sell_non_positive_shares));
@@ -240,7 +238,7 @@ public class InfoActivity extends AppCompatActivity {
                 successMsg.setText(getString(R.string.sell_message) + " " + inputValue);
                 // update
                 updatePortfo();
-                wallet.setText(dataFormatter.toPriceFormat(LocalStorage.getInstance(this).getBalance()));
+                wallet.setText(DataFormatter.toPriceFormat(LocalStorage.getInstance(this).getBalance()));
             }
         });
         doneBtn.setOnClickListener(doneView -> {
@@ -253,12 +251,12 @@ public class InfoActivity extends AppCompatActivity {
         Double totalCost = LocalStorage.getInstance(this).getPortfoCost(ticker);
         Double value = sharesOwned * currPrice;
         infoPortfolioBinding.sharesOwned.setText(String.valueOf(sharesOwned));
-        infoPortfolioBinding.avgCost.setText(dataFormatter.toPriceFormat(LocalStorage.getInstance(this).getPortfoAvg(ticker)));
-        infoPortfolioBinding.totalCost.setText(dataFormatter.toPriceFormat(totalCost));
-        infoPortfolioBinding.change.setText(dataFormatter.toPriceFormat(value - totalCost));
-        Double change = Double.valueOf(dataFormatter.toDecimal(value - totalCost));
+        infoPortfolioBinding.avgCost.setText(DataFormatter.toPriceFormat(LocalStorage.getInstance(this).getPortfoAvg(ticker)));
+        infoPortfolioBinding.totalCost.setText(DataFormatter.toPriceFormat(totalCost));
+        infoPortfolioBinding.change.setText(DataFormatter.toPriceFormat(value - totalCost));
+        Double change = Double.valueOf(DataFormatter.toDecimal(value - totalCost));
         infoPortfolioBinding.change.setTextColor(getResources().getColor(change == 0 ? R.color.black : (change > 0 ? R.color.lightgreen : R.color.lightred)));
-        infoPortfolioBinding.marketValue.setText(dataFormatter.toPriceFormat(value));
+        infoPortfolioBinding.marketValue.setText(DataFormatter.toPriceFormat(value));
         infoPortfolioBinding.marketValue.setTextColor(getResources().getColor(change == 0 ? R.color.black : (change > 0 ? R.color.lightgreen : R.color.lightred)));
     }
 
@@ -275,7 +273,7 @@ public class InfoActivity extends AppCompatActivity {
                 infoDescriptionBinding.companyName.setText(data.getString("name"));
                 companyName = data.getString("name");
                 Picasso.get().load(data.getString("logo")).into(infoDescriptionBinding.logo);
-                infoAboutBinding.ipoStartDate.setText(dataFormatter.toDateFormat(data.getString("ipo")));
+                infoAboutBinding.ipoStartDate.setText(DataFormatter.toDateFormat(data.getString("ipo")));
                 infoAboutBinding.industry.setText(data.getString("finnhubIndustry"));
                 infoAboutBinding.webpage.setText(data.getString("weburl"));
                 infoInsightsBinding.socialCompany.setText(data.getString("name"));
@@ -317,24 +315,24 @@ public class InfoActivity extends AppCompatActivity {
         apiController.getQuote(ticker, data -> {
             numOfRequest --;
             try {
-                infoDescriptionBinding.currPrice.setText(dataFormatter.toPriceFormat(data.getDouble("c")));
-                currPrice = Double.valueOf(dataFormatter.toDecimal(data.getDouble("c")));
+                infoDescriptionBinding.currPrice.setText(DataFormatter.toPriceFormat(data.getDouble("c")));
+                currPrice = Double.valueOf(DataFormatter.toDecimal(data.getDouble("c")));
                 Double change = data.getDouble("d");
-                infoDescriptionBinding.currChange.setText(dataFormatter.toPriceFormat(change));
+                infoDescriptionBinding.currChange.setText(DataFormatter.toPriceFormat(change));
                 infoDescriptionBinding.currChange.setTextColor(change == 0.0 ? getResources().getColor(R.color.black) : (change > 0 ? getResources().getColor(R.color.lightgreen) : getResources().getColor(R.color.lightred)));
-                infoDescriptionBinding.currChangePercent.setText(dataFormatter.toPercentFormat(data.getDouble("dp")));
+                infoDescriptionBinding.currChangePercent.setText(DataFormatter.toPercentFormat(data.getDouble("dp")));
                 infoDescriptionBinding.currChangePercent.setTextColor(change == 0.0 ? getResources().getColor(R.color.black) : (change > 0 ? getResources().getColor(R.color.lightgreen) : getResources().getColor(R.color.lightred)));
                 if (change > 0)
                     infoDescriptionBinding.trending.setImageDrawable(getDrawable(R.drawable.ic_trending_up));
                 else
                     infoDescriptionBinding.trending.setImageDrawable(getDrawable(R.drawable.ic_trending_down));
                 updatePortfo();
-                infoStatsBinding.openPrice.setText(dataFormatter.toPriceFormat(data.getDouble("o")));
-                infoStatsBinding.highPrice.setText(dataFormatter.toPriceFormat(data.getDouble("h")));
-                infoStatsBinding.lowPrice.setText(dataFormatter.toPriceFormat(data.getDouble("l")));
-                infoStatsBinding.prevPrice.setText(dataFormatter.toPriceFormat(data.getDouble("pc")));
+                infoStatsBinding.openPrice.setText(DataFormatter.toPriceFormat(data.getDouble("o")));
+                infoStatsBinding.highPrice.setText(DataFormatter.toPriceFormat(data.getDouble("h")));
+                infoStatsBinding.lowPrice.setText(DataFormatter.toPriceFormat(data.getDouble("l")));
+                infoStatsBinding.prevPrice.setText(DataFormatter.toPriceFormat(data.getDouble("pc")));
                 TextView tradePrice = dialog.findViewById(R.id.price);
-                tradePrice.setText(dataFormatter.toPriceFormat(data.getDouble("c")));
+                tradePrice.setText(DataFormatter.toPriceFormat(data.getDouble("c")));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -372,8 +370,8 @@ public class InfoActivity extends AppCompatActivity {
                 JSONArray twitter = data.getJSONArray("twitter");
                 int[] redditRes = new int[3];
                 int[] twitterRes = new int[3];
-                dataFormatter.toTotal(redditRes, reddit);
-                dataFormatter.toTotal(twitterRes, twitter);
+                DataFormatter.toTotal(redditRes, reddit);
+                DataFormatter.toTotal(twitterRes, twitter);
                 infoInsightsBinding.redditTotal.setText(Integer.toString(redditRes[0]));
                 infoInsightsBinding.redditPos.setText(Integer.toString(redditRes[1]));
                 infoInsightsBinding.redditNeg.setText(Integer.toString(redditRes[2]));

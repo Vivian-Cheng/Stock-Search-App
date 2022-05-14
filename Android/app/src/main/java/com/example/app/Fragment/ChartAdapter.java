@@ -1,14 +1,11 @@
 package com.example.app.Fragment;
 
 import android.os.Bundle;
-import android.webkit.WebView;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
-
-import com.example.app.R;
 
 public class ChartAdapter extends FragmentStateAdapter {
     private static int NUM_TAB = 2;
