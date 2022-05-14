@@ -1,0 +1,53 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Theme.App.Splash" parent="Theme.App">
+        <item name = "windowActionBar">true</item>
+        <item name="colorPrimary">@color/cardview_light_background</item>
+        <item name="colorPrimaryVariant">@color/black</item>
+        <item name="android:windowBackground">@drawable/splash_background</item>
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+    </style>
+    <!-- Base application theme. -->
+    <style name="Theme.App" parent="Theme.AppCompat.Light">
+        <item name="android:windowBackground">@color/white</item>
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/cardview_light_background</item>
+        <item name="colorPrimaryVariant">@color/black</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textColorPrimary">@color/black</item>
+        <item name="android:textColorSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+    </style>
+    <!-- Peers button style -->
+    <style name="Widget.AppCompat.Button.Peer" parent="Widget.MaterialComponents.Button">
+        <item name="android:background">@color/white</item>
+        <item name="android:textColor">@color/blue_link</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:maxWidth">40dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:paddingLeft">0dp</item>
+        <item name="android:paddingRight">0dp</item>
+        <item name="android:layout_marginLeft">0dp</item>
+        <item name="android:layout_marginRight">0dp</item>
+    </style>
+    <!-- Round image -->
+    <style name="RoundedImageView" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">10dp</item>
+    </style>
+    <!-- divider -->
+    <style name="Divider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">2dp</item>
+        <item name="android:background">@color/gray</item>
+    </style>
+    <!-- edittext -->
+    <style name="EditText">
+        <item name="colorControlNormal">@color/grey</item>
+        <item name="colorControlActivated">@color/teal_200</item>
+        <item name="colorControlHighlight">@color/teal_200</item>
+    </style>
+</resources>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.203" />
+        <entry key="app/src/main/res/drawable-v24/splash_background.xml" value="0.196" />
+        <entry key="app/src/main/res/drawable/ic_chart_line.xml" value="0.2175" />
+        <entry key="app/src/main/res/drawable/ic_chevron_right.xml" value="0.162" />
+        <entry key="app/src/main/res/drawable/ic_delete.xml" value="0.158" />
+        <entry key="app/src/main/res/drawable/ic_magnify.xml" value="0.203" />
+        <entry key="app/src/main/res/drawable/ic_star.xml" value="0.162" />
+        <entry key="app/src/main/res/drawable/ic_star_outline.xml" value="0.2315" />
+        <entry key="app/src/main/res/drawable/ic_trending_down.xml" value="0.2175" />
+        <entry key="app/src/main/res/drawable/ic_trending_up.xml" value="0.2175" />
+        <entry key="app/src/main/res/drawable/round_corner_shape.xml" value="0.158" />
+        <entry key="app/src/main/res/drawable/round_img.xml" value="0.18" />
+        <entry key="app/src/main/res/drawable/splash_background.xml" value="0.2" />
+        <entry key="app/src/main/res/drawable/tab_color_selector.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_info.xml" value="0.3237682728749323" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_searchable.xml" value="0.26403985507246375" />
+        <entry key="app/src/main/res/layout/fragment_history_chart.xml" value="0.17889492753623187" />
+        <entry key="app/src/main/res/layout/fragment_histry_chart.xml" value="0.17889492753623187" />
+        <entry key="app/src/main/res/layout/fragment_hourly_chart.xml" value="0.17889492753623187" />
+        <entry key="app/src/main/res/layout/info_about.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/info_description.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/info_earn.xml" value="0.16312056737588654" />
+        <entry key="app/src/main/res/layout/info_historical.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/info_insights.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/info_news.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/info_news_large.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/info_portfolio.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/info_recommend.xml" value="0.16312056737588654" />
+        <entry key="app/src/main/res/layout/info_stats.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/layout.xml" value="0.1983695652173913" />
+        <entry key="app/src/main/res/layout/news_dialog.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/news_item.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/news_item_large.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/section_favorite.xml" value="0.17346014492753623" />
+        <entry key="app/src/main/res/layout/section_header.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/section_header_favorite.xml" value="0.17346014492753623" />
+        <entry key="app/src/main/res/layout/section_header_portfolio.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/section_item.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/section_portfolio.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/text_peers_item.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/trade_dialog.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/trade_finish_dialog.xml" value="0.25" />
+        <entry key="app/src/main/res/menu/info_menu.xml" value="0.24947916666666667" />
+        <entry key="app/src/main/res/menu/menu.xml" value="0.30052083333333335" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.129" />
+        <entry key="app/src/main/res/xml/network_security_config.xml" value="0.19166666666666668" />
+        <entry key="app/src/main/res/xml/searchable.xml" value="0.26403985507246375" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

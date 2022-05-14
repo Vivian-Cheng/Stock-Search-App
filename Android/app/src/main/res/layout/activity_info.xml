@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/info"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".InfoActivity">
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/spinner"
+        android:layout_gravity="center_horizontal"
+        android:indeterminateTint="@color/purple_500"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <include
+                android:id="@+id/description"
+                layout="@layout/info_description" />
+
+            <include
+                android:id="@+id/chart_tab"
+                layout="@layout/info_historical" />
+
+            <include
+                android:id="@+id/portfolio"
+                layout="@layout/info_portfolio"/>
+
+            <include
+                android:id="@+id/stats"
+                layout="@layout/info_stats"/>
+
+            <include
+                android:id="@+id/about"
+                layout="@layout/info_about" />
+
+            <include
+                android:id="@+id/insights"
+                layout="@layout/info_insights"/>
+
+            <include
+                android:id="@+id/recommend"
+                layout="@layout/info_recommend"/>
+
+            <include
+                android:id="@+id/earn"
+                layout="@layout/info_earn"/>
+
+            <include
+                android:id="@+id/news"
+                layout="@layout/info_news"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

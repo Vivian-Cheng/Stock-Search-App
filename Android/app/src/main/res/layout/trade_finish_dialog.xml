@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginHorizontal="10dp"
+    android:backgroundTint="@color/green"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="20dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="40dp"
+        android:paddingHorizontal="25dp"
+        android:gravity="center"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginBottom="15dp"
+            android:text="Congratulations!"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:textSize="24dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:id="@+id/trade_message_action"
+            android:text="You have successfully bought 2"
+            android:textColor="@color/white"
+            android:textStyle="italic"
+            android:textSize="16dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginBottom="30dp"
+            android:id="@+id/trade_message_company"
+            android:text="shares of XXXX"
+            android:textColor="@color/white"
+            android:textStyle="italic"
+            android:textSize="16dp"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/done_btn"
+            android:text="DONE"
+            android:textColor="@color/green"
+            android:textStyle="bold"
+            android:textSize="16dp"
+            android:background="@drawable/round_corner_shape"
+            android:backgroundTint="@color/white"/>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

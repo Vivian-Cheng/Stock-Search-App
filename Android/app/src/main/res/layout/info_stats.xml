@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="90dp"
+    android:padding="10dp"
+    android:stretchColumns="3">
+    <TableRow android:minHeight="26dp">
+        <TextView
+            android:text="@string/info_stats_title"
+            android:textSize="16dp"
+            android:textStyle="bold"/>
+    </TableRow>
+    <TableRow android:minHeight="24dp"
+              android:gravity="center_vertical">
+        <TextView
+            android:layout_width="72dp"
+            android:paddingLeft="4dp"
+            android:text="@string/info_stat_row1_col1"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/open_price"
+            android:layout_width="121dp"
+            android:text="$0000.00"
+            android:textSize="12dp" />
+        <TextView
+            android:layout_width="72dp"
+            android:text="@string/info_stat_row1_col2"
+            android:textSize="12dp"
+            android:paddingLeft="4dp"/>
+        <TextView
+            android:id="@+id/high_price"
+            android:text="$0000.00"
+            android:textSize="12dp"/>
+    </TableRow>
+    <TableRow android:minHeight="24dp"
+        android:gravity="center_vertical">
+        <TextView
+            android:layout_width="72dp"
+            android:paddingLeft="4dp"
+            android:text="@string/info_stat_row2_col1"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/low_price"
+            android:layout_width="121dp"
+            android:text="$0000.00"
+            android:textSize="12dp" />
+        <TextView
+            android:layout_width="72dp"
+            android:text="@string/info_stat_row2_col2"
+            android:textSize="12dp"
+            android:paddingLeft="4dp"/>
+        <TextView
+            android:id="@+id/prev_price"
+            android:text="$0000.00"
+            android:textSize="12dp"/>
+    </TableRow>
+</TableLayout>

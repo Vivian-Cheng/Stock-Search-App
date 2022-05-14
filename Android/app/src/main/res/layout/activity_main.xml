@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/spinner"
+        android:visibility="gone"
+        android:layout_gravity="center_horizontal"
+        android:indeterminateTint="@color/purple_500"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:paddingHorizontal="10dp"
+                android:id="@+id/date"
+                android:text="30 March 2022"
+                android:textSize="18dp"
+                android:textColor="@color/darkgray"
+                android:textStyle="bold"/>
+            <include
+                android:id="@+id/section_portfolio"
+                layout="@layout/section_portfolio"/>
+            <include
+                android:id="@+id/section_favarite"
+                layout="@layout/section_favorite"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:gravity="center"
+                android:id="@+id/footer"
+                android:text="@string/Finnhub"
+                android:textColor="@color/darkgray"
+                android:textColorLink="@color/darkgray"
+                android:textStyle="italic"/>
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>

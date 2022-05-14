@@ -1,0 +1,44 @@
+<resources>
+    <string name="local_storage_portfo_own">portfoOwn</string>
+    <string name="local_storage_portfo_cost">portfoCost</string>
+    <string name="local_storage_favorite">favorite</string>
+    <string name="local_storage_wallet">wallet</string>
+    <string name="local_storage_order">order</string>
+    <string name="is_added_to_favorites">is added to favorites</string>
+    <string name="is_removed_from_favorites">is removed from favorites</string>
+    <string name="not_enough_shares_to_sell">Not enough shares to sell</string>
+    <string name="not_enough_money_to_buy">Not enough money to buy</string>
+    <string name="cannot_sell_non_positive_shares">Cannot sell non-positive shares</string>
+    <string name="cannot_buy_non_positive_shares">Cannot buy non-positive shares</string>
+    <string name="please_enter_a_valid_amount">Please enter a valid amount</string>
+    <string name="buy_message">You have successfully bought </string>
+    <string name="sell_message">You have successfully sold </string>
+    <string name="app_name">Stocks</string>
+    <string name="info_about_title">About</string>
+    <string name="info_about_row1">IPO Start Date</string>
+    <string name="info_about_row2">Industry</string>
+    <string name="info_about_row3">Webpage</string>
+    <string name="info_about_row4">Company Peers</string>
+    <string name="info_stat_row1_col1">Open Price :</string>
+    <string name="info_stat_row1_col2">High Price :</string>
+    <string name="info_stat_row2_col1">Low Price :</string>
+    <string name="info_stat_row2_col2">Prev. Close :</string>
+    <string name="info_insight_title">Insights</string>
+    <string name="info_insight_table_title">Social Sentiments</string>
+    <string name="social_row1_col2">Reddit</string>
+    <string name="social_row1_col3">Twitter</string>
+    <string name="social_row2">Total Mentions</string>
+    <string name="social_row3">Positive Mentions</string>
+    <string name="social_row4">Negative Mentions</string>
+    <string name="info_news_title">News</string>
+    <string name="Finnhub">Powered by Finnhub</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="info_stats_title">Stats</string>
+    <string name="info_portfo_title">Portfolio</string>
+    <string name="info_portfo_row1">Shares Owned:</string>
+    <string name="info_portfo_row2">Avg. Cost / Share:</string>
+    <string name="info_portfo_row3">Total Cost:</string>
+    <string name="info_portfo_row4">Change:</string>
+    <string name="info_portfo_row5">Market Value:</string>
+</resources>

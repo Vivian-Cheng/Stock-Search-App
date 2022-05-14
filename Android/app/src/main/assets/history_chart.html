@@ -1,0 +1,178 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta charset="utf-8">
+</head>
+<body>
+    <div id="container"></div>
+    <script src="https://code.highcharts.com/stock/highstock.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/data.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/drag-panes.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/stock/indicators/indicators.js"></script>
+    <script src="https://code.highcharts.com/stock/indicators/volume-by-price.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <script src="https://code.highcharts.com/modules/no-data-to-display.js"></script>
+    <script>
+        function loadData(ticker) {
+          let HOST = "http://csci571nodejs-env.eba-sx8smmpb.us-west-1.elasticbeanstalk.com/";
+          let today = new Date();
+          let to = Math.floor(Date.now() / 1000).toString();
+          let from = Math.floor(today.setFullYear(today.getFullYear() - 2) / 1000).toString();
+          url = HOST + "candle/" + ticker + "/D/" + from +  "/" + to;
+          fetch(url).then(response => response.json()).then(data => {
+            let ohlc = [], volume = [];
+            // check for valid company candle data
+            if (data.s == 'ok') {
+              for (let i = 0; i < data.t.length; i++) {
+                ohlc.push([data.t[i] * 1000, data.o[i], data.h[i], data.l[i], data.c[i]]);
+                volume.push([data.t[i] * 1000, data.v[i]]);
+              }
+            }
+            setChart(ticker, ohlc, volume);
+          })
+
+        }
+        function setChart(ticker, ohlc, volume) {
+            Highcharts.setOptions({
+              lang: {
+              noData: 'No data to display'
+                }
+              });
+            Highcharts.stockChart('container', {
+              rangeSelector: {
+                enabled: true,
+                allButtonsEnabled: true,
+                buttons: [
+                  {
+                    type: 'month',
+                    count: 1,
+                    text: '1m',
+                    title: 'View 1 month',
+                  },
+                  {
+                    type: 'month',
+                    count: 3,
+                    text: '3m',
+                    title: 'View 3 months',
+                  },
+                  {
+                    type: 'month',
+                    count: 6,
+                    text: '6m',
+                    title: 'View 6 months',
+                  },
+                  {
+                    type: 'ytd',
+                    text: 'YTD',
+                    title: 'View year to date',
+                  },
+                  {
+                    type: 'year',
+                    count: 1,
+                    text: '1y',
+                    title: 'View 1 year',
+                  },
+                  {
+                    type: 'all',
+                    text: 'All',
+                    title: 'View all',
+                  },
+                ],
+                selected: 2
+              },
+              navigation: {
+                buttonOptions: {
+                    enabled: false
+                }
+              },
+
+              title: {
+                text: ticker + ' Historical'
+              },
+
+              subtitle: {
+                text: 'With SMA and Volume by Price technical indicators'
+              },
+              xAxis: [{
+                type: 'datetime',
+                labels: {
+                  format: '{value: %e. %b}'
+                }
+              }],
+              yAxis: [{
+                startOnTick: false,
+                endOnTick: false,
+                labels: {
+                  align: 'right',
+                  x: -3
+                },
+                title: {
+                  text: 'OHLC'
+                },
+                height: '60%',
+                lineWidth: 2,
+                resize: {
+                  enabled: true
+                }
+              }, {
+                labels: {
+                  align: 'right',
+                  x: -3
+                },
+                title: {
+                  text: 'Volume'
+                },
+                top: '65%',
+                height: '35%',
+                offset: 0,
+                lineWidth: 2
+              }],
+
+              tooltip: {
+                split: true,
+                valueDecimals: 2
+              },
+
+              series: [{
+                type: 'candlestick',
+                name: ticker,
+                id: 'candle',
+                zIndex: 2,
+                data: ohlc
+              }, {
+                type: 'column',
+                name: 'Volume',
+                id: 'volume',
+                data: volume,
+                yAxis: 1
+              }, {
+                type: 'vbp',
+                linkedTo: 'candle',
+                params: {
+                  volumeSeriesID: 'volume'
+                },
+                dataLabels: {
+                  enabled: false
+                },
+                zoneLines: {
+                  enabled: false
+                }
+              }, {
+                type: 'sma',
+                linkedTo: 'candle',
+                zIndex: 1,
+                marker: {
+                  enabled: false
+                }
+              }]
+            })
+          }
+
+
+    </script>
+</body>
+</html>
+
+
+

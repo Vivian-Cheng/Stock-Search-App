@@ -1,0 +1,106 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta charset="utf-8">
+</head>
+<body>
+    <div id="container"></div>
+    <script src="https://code.highcharts.com/stock/highstock.js"></script>
+    <script src="https://code.highcharts.com/modules/no-data-to-display.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <script>
+
+
+function loadData(ticker) {
+  let HOST = "http://csci571nodejs-env.eba-sx8smmpb.us-west-1.elasticbeanstalk.com/";
+  let change = 0;
+  let now = Math.floor(Date.now() / 1000);
+  let urlQuote = HOST + "quote/" + ticker;
+  fetch(urlQuote).then(response => response.json()).then(data => {
+    let from = (now - 21600).toString();
+    let to = now.toString();
+    if (data.t) {
+      change = data.d;
+      if (now - data.t < 60) {
+        to = now.toString();
+        from = (now - 21600).toString();
+      } else {
+        to = data.t;
+        from = (data.t - 21600).toString();
+      }
+    }
+    let urlCandle = HOST + "candle/" + ticker + "/5/" + from + "/" + to;
+    fetch(urlCandle).then(response => response.json()).then(data => {
+      let dataList = [];
+      if (data.s == 'ok') {
+        for (let i = 0; i < data.t.length; i++) {
+          dataList.push([data.t[i] * 1000, data.c[i]]);
+        }
+      }
+      setChart(ticker, dataList, change);
+    })
+  });
+}
+function setChart(ticker, dataList, change) {
+  Highcharts.setOptions({
+    lang: {
+      noData: 'No data to display'
+    }
+  });
+  Highcharts.chart('container', {
+    title: {
+      text: ticker + " Hourly Price Variation"
+    },
+    xAxis: {
+      type: 'datetime',
+      labels: {
+        format: '{value: %H:%M}'
+      },
+      title: {
+        text: null
+      },
+      scrollbar: {
+        enabled: true
+      },
+      crosshair: true
+    },
+    yAxis: {
+      labels: {
+        align: 'left',
+        x: -15,
+        y: -2
+      },
+      title: {
+        text: null
+      },
+      opposite: true
+    },
+    series: [{
+      type: 'line',
+      name: ticker,
+      data: dataList,
+      color: change == 0 ? '#000000' : (change > 0 ? '#53A451' : '#E9392B'),
+      tooltip: {
+        valueDecimals: 2
+      },
+      showInLegend: false
+    }],
+    time: {
+      timezoneOffset: new Date().getTimezoneOffset()
+    },
+    tooltip: {
+      split: true
+    },
+    navigation: {
+      buttonOptions: {
+        enabled: false
+      }
+    }
+  })
+}
+
+    </script>
+</body>
+</html>

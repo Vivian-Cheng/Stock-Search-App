@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="140dp"
+    android:theme="@style/Theme.App"
+    android:padding="10dp"
+    android:stretchColumns="1">
+    <TableRow android:minHeight="26dp">
+        <TextView
+            android:text="@string/info_about_title"
+            android:textSize="16dp"
+            android:textStyle="bold"/>
+    </TableRow>
+    <TableRow android:minHeight="24dp"
+              android:gravity="center_vertical">
+        <TextView
+            android:layout_width="128dp"
+            android:text="@string/info_about_row1"
+            android:textSize="12dp"
+            android:paddingLeft="4dp"/>
+        <TextView
+            android:id="@+id/ipoStartDate"
+            android:text="ipo start date"
+            android:textSize="12dp"/>
+    </TableRow>
+    <TableRow android:minHeight="24dp"
+        android:gravity="center_vertical">
+        <TextView
+            android:text="@string/info_about_row2"
+            android:textSize="12dp"
+            android:paddingLeft="4dp"/>
+        <TextView
+            android:id="@+id/industry"
+            android:text="industry"
+            android:textSize="12dp"/>
+    </TableRow>
+    <TableRow android:minHeight="24dp"
+        android:gravity="center_vertical">
+        <TextView
+            android:text="@string/info_about_row3"
+            android:textSize="12dp"
+            android:paddingLeft="4dp"/>
+        <TextView
+            android:id="@+id/webpage"
+            android:text="webpage"
+            android:textSize="12dp"
+            android:autoLink="web"
+            android:linksClickable="true"
+            android:textColorLink="@color/blue_link"
+            android:textColorHighlight="@color/white"/>
+    </TableRow>
+    <TableRow android:minHeight="24dp"
+        android:gravity="center_vertical"
+        android:id="@+id/company_peers">
+        <TextView
+            android:text="@string/info_about_row4"
+            android:textSize="12dp"
+            android:paddingLeft="4dp"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/company_peers_list"
+            android:scrollbars="none"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:layout_centerHorizontal="true"/>
+    </TableRow>
+</TableLayout>
